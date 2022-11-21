@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :validatable, :confirmable, :lockable, :trackable
 
   has_many :products
+  has_many :bookings
 end
