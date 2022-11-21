@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_21_051333) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_052915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_051333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "product_assignments", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_product_assignments_on_booking_id"
+    t.index ["product_id"], name: "index_product_assignments_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -65,5 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_051333) do
   end
 
   add_foreign_key "bookings", "users"
+  add_foreign_key "product_assignments", "bookings"
+  add_foreign_key "product_assignments", "products"
   add_foreign_key "products", "users"
 end
