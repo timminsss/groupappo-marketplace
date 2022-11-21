@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :bookings
 
   validates :first_name, :last_name, :zip_code, presence: true
-  validates :zip_code, format: { with: /^\d{5}$/, message: 'only allows 5 digits' }
+  validates :zip_code, format: { with: /\A\d{5}\z/, message: 'only allows 5 digits' }
 end
