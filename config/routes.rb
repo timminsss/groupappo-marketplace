@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
-  # get 'bookings/new', to: 'bookings#new'
-  # post 'bookings', to: 'bookings#create'
-  # get 'bookings/:id', to: 'bookings#show', as: 'booking'
-  # get 'bookings/destroy'
-  # get 'bookings/edit'
-  # get 'bookings/update'
-
   devise_for :users
   root to: "pages#home"
 
   resources :product_assignments
   resources :bookings
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :products
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "/products/search", to: "products#search"
+
+  get '/my-products', to: 'products#index_owner'
+  get '/my-products/:id', to: 'products#show_owner', as: 'my_product'
+
 end

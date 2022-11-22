@@ -1,0 +1,10 @@
+
+<%= simple_form_for :product, url: products_search_path, method: :get, html: { class: 'form-inline' } do |f| %>
+  <%= f.input :category, collection: Product::CATEGORY_NAME, label: false, placeholder: "mountain bike", include_blank: false, include_hidden: false %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<% @products.each do |product| %>
+  <%= render "card", product: product %>
+<%end%>
