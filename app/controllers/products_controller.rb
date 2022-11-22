@@ -12,12 +12,16 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
   end
-    
+
   def index_owner
     @products = Product.where(user: current_user)
   end
 
   def show_owner
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def new
