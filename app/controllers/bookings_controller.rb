@@ -15,17 +15,17 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
-    raise
-    @product = Product.find(@product.id)
+    @product_assignment_controller = ProductAssignmentsController.new
+
+    @product = Product.find(params[:product_id])
     if @booking.save
       @booking.update(booking_status: 1)
-      create_product_assignment_path()
-      redirect_to bookings_path(@booking)
+      @product_assignment_controller.create(@product, @booking)
+      redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   # def destroy
   # end

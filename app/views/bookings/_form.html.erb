@@ -1,7 +1,6 @@
-<%= simple_form_for(booking, product) do |f| %>
-<% raise %>
+<%= simple_form_for [booking] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.submit nil, { class: "btn btn-primary" } %>
-  <%= hidden_field_tag :product, @product %>
+  <%= hidden_field_tag :product_id, @product.id %>
 <% end %>
