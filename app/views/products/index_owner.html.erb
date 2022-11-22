@@ -18,7 +18,7 @@
         <td><%= product.product_type %></td>
         <td><%= product.name %></td>
         <td><%= product.price %> €</td>
-        <td>Placeholder</td>
+        <td><%= link_to "View", my_product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>

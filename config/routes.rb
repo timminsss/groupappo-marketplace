@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/my-products', to: 'products#index_owner'
+  get '/my-products/:id', to: 'products#show_owner', as: 'my_product'
+  get 'products/new', to: 'products#new'
 end
