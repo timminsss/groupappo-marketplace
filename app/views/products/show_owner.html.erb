@@ -1,66 +1,80 @@
-<table class="table">
-  <thead>
-    <tr>
-        <th scope="col">Attribute</th>
-        <th scope="col">Detail</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-      <td>
-        category
-      </td>
-      <td>
-        <%=  @product.category %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        product_typ
-      </td>
-      <td>
-        <%=  @product.product_type %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        name
-      </td>
-      <td>
-        <%=  @product.name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        description
-      </td>
-      <td>
-        <%=  @product.description %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        price
-      </td>
-      <td>
-        <%=  @product.price    %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        created_at
-      </td>
-      <td>
-        <%=  @product.created_at %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        updated_at
-      </td>
-      <td>
-        <%=  @product.updated_at %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>Details on <%= @product.name %></h1>
+</div>
+
+<div class="row">
+<div class="col-12 col-lg-9">
+    <table class="table">
+      <thead>
+        <tr>
+            <th scope="col">Attribute</th>
+            <th scope="col">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <td>
+            Category
+          </td>
+          <td>
+            <%=  @product.category %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Product type
+          </td>
+          <td>
+            <%=  @product.product_type %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Name
+          </td>
+          <td>
+            <%=  @product.name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Description
+          </td>
+          <td>
+            <%=  @product.description %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Price
+          </td>
+          <td>
+            <%=  @product.price    %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Created_at
+          </td>
+          <td>
+            <%=  @product.created_at %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Updated_at
+          </td>
+          <td>
+            <%=  @product.updated_at %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <img src="..." class="img-fluid" alt="...">
+  </div>
+<div class="col-12 col-lg-3">
+    <%= link_to "Edit product", edit_product_path(@product), class: "btn btn-primary w-100 m-2" %>
+    <br>
+    <%= link_to "Delete product", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary w-100 m-2"   %>
+</div>
+</div>
