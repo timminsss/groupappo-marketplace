@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
   end
-    
+
   def index_owner
     @products = Product.where(user: current_user)
   end
