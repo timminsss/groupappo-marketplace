@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/my-products', to: 'products#index_owner'
   get '/my-products/:id', to: 'products#show_owner', as: 'my_product'
+  get '/products/show/:id', to: 'products#show'
 
   resources :products
 end
