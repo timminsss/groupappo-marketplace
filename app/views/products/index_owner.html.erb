@@ -1,13 +1,14 @@
 
 <div class="d-flex justify-content-between align-items-center">
   <h1>All your products</h1>
-  <%= link_to "Add product", products_new_path, class: "btn btn-primary" %>
+  <%= link_to "Add product", new_product_path, class: "btn btn-primary" %>
 </div>
 
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">ID</th>
       <th scope="col">Category</th>
       <th scope="col">Product type</th>
       <th scope="col">Name</th>
@@ -19,11 +20,16 @@
     <% @products.each_with_index do |product, index| %>
       <tr>
         <th scope="row"><%= index + 1 %></th>
+        <td><%= product.id %></td>
         <td><%= product.category %></td>
         <td><%= product.product_type %></td>
         <td><%= product.name %></td>
         <td><%= product.price %> €</td>
-        <td><%= link_to "View", my_product_path(product) %></td>
+        <td>
+          <%= link_to "View", my_product_path(product) %>
+          <%= link_to "Update", edit_product_path(product) %>
+          <%= link_to "Delete", product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+          <%# my_product_path needs to be exchange with overall product path, my product path is only for different view %>
       </tr>
     <% end %>
   </tbody>
