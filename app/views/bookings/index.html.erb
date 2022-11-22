@@ -1,0 +1,12 @@
+<div class="container p-3">
+
+<h1>These are your bookings</h1>
+<% @bookings.each do |booking| %>
+  <div class="card border p-3 m-2">
+    <img src=" <%= %> " alt="">
+    <p> <%= booking.booking_status %> </p>
+    <p> $ <%= booking.price %> </p>
+    <p> <%= booking.start_date.strftime('%d/%m/%Y %H:%M') %> - <%= booking.end_date.strftime('%d/%m/%Y %H:%M') %> </p>
+  </div>
+<% end %>
+</div>
