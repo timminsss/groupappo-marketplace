@@ -15,8 +15,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
+    raise
+    @product = Product.find(@product.id)
     if @booking.save
       @booking.update(booking_status: 1)
+      create_product_assignment_path()
       redirect_to bookings_path(@booking)
     else
       render :new, status: :unprocessable_entity
@@ -40,6 +43,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :booking_status)
+    params.require(:booking).permit(:start_date, :end_date, :booking_status, :product_id)
   end
 end

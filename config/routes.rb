@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :product_assignments
   resources :bookings
-  resources :products
+  resources :products do
+    resources :product_assignments, only: [:new, :create]
+  end
+  resources :product_assignments, only: [:destroy]
 
   get "/products/search", to: "products#search"
 
