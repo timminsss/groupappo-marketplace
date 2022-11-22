@@ -50,6 +50,8 @@ gem "sassc-rails"
 # Picture cloud hosting
 gem "cloudinary"
 
+gem "faker"
+
 # Devise user management
 gem "devise"
 gem 'bootstrap', '~> 5.2.2'
