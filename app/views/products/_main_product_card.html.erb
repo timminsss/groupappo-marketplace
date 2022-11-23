@@ -1,5 +1,5 @@
 
-<div class="container d-flex overflow-hidden p-3">
+<div class="container d-flex overflow-hidden">
   <div class="card-product col-7">
     <div class="card rounded-lg p-3">
 
@@ -26,23 +26,5 @@
     <div class="card-booking col-5 p-2">
       <%= render "bookings/form", { booking: @booking, product: @product } %>
     </div>
-  </div>
-</div>
-
-<div class="container my-5 overflow-hidden">
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-  <% products = Product.all %>
-  <% products.search do |product| %>
-    <% if product.product_type != :bike %>
-        <div class="col">
-          <div class="p-3 border bg-light">
-            <img src="https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png"
-                  class="img-fluid rounded-start" alt="...">
-            <h3> <%= product.name %> </h3>
-            <p> <%= product.description %> </p>
-          </div>
-        </div>
-    <% end %>
-  <% end %>
   </div>
 </div>

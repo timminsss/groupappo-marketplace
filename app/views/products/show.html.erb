@@ -1,3 +1,4 @@
-<%= link_to "Back to Products", products_path, { class: "btn btn-primary" } %>
-<%= render "card", product: @product %>
-<%#= render "bookings/form", { booking: @booking, product: @product } %>
+<div class="cont">
+  <%= render "main_product_card", product: @product %>
+  <%= render "acc_card", product: @product %>
+</div>
