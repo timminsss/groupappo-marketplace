@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index search]
   before_action :set_product, only: %i[edit update show_owner destroy]
 
   def index
