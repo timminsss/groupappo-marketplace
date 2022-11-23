@@ -54,6 +54,12 @@ users.each do |user|
   10.times do
     bike_category = Product::CATEGORY_NAME.sample
     bike_url = bike_category_images[bike_category]
+    product_type_input = ""
+    if bike_category == "accessories"
+      product_type_input = Product::PRODUCT_TYPE_NAME.sample
+    else
+      product_type_input = "bike"
+    end
     Product.create(
       user_id: user.id,
       category: bike_category,
@@ -61,7 +67,7 @@ users.each do |user|
       description: Faker::Lorem.paragraph,
       price: rand(50..100),
       image_url: bike_url,
-      product_type: Product::PRODUCT_TYPE_NAME.sample
+      product_type: product_type_input
     )
     puts "#{Product.last.id}#{Product.last.user_id} - #{Product.last.category} - #{Product.last.name}"
   end
