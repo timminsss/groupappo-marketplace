@@ -9,7 +9,7 @@
       <th scope="col">ID</th>
       <th scope="col">Customer</th>
       <th scope="col">Bike</th>
-      <th scope="col">Price</th>
+      <th scope="col">Overall price</th>
       <th scope="col">Status</th>
       <th scope="col">Actions</th>
     </tr>
@@ -20,15 +20,12 @@
         <th scope="row"><%= index + 1 %></th>
         <td><%= booking.id %></td>
         <td><%= booking.user.first_name %></td>
-        <td><%= booking.products.first.name %></td>
+        <td><%= link_to booking.products.first.name, owner_product_path(booking.products.first) %></td>
         <td><%= booking.price %></td>
-        <td><%= booking.booking_status %></td>
+        <td><%= render 'shared/status', booking_status: booking.booking_status %></td>
         <td class="d-flex">
-          <%= link_to root_path do %>
+          <%= link_to owner_booking_path(booking) do %>
             <i class="fa-regular fa-folder-open me-3"></i>
-          <% end %>
-          <%= link_to root_path do %>
-            <i class="fa-solid fa-pen-to-square me-3"></i>
           <% end %>
           </td>
       </tr>
