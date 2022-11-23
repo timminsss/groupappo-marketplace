@@ -1,5 +1,5 @@
 
-<div class="container d-flex overflow-hidden">
+<div class="container d-flex overflow-hidden rounded">
   <div class="card-product col-7">
     <div class="card rounded-lg p-3">
 
@@ -12,19 +12,24 @@
         <div class="card-product-infos">
           <div>
             <h2><%=product.name.upcase%></h2>
-            <p><%=product.category%></p>
+            <div class="d-flex justify-content-between py-1">
+              <span><%=product.category.capitalize%></span>
+              <span>$<%=product.price%> per day</span>
+            </div>
           </div>
-          <p class="card-pricing">$<%=product.price%> per day</p>
-          <p class="card-description"><%=product.description%></p>
+          <p class="pt-2"><%=product.description%></p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <div class="container">
-    <div class="card-booking col-5 p-2">
-      <%= render "bookings/form", { booking: @booking, product: @product } %>
+  <div class="container rounded">
+    <div class="card rounded col-5 p-2 w-100">
+      <h3>Book this bike?</h3>
+      <div class="py-3">
+        <%= render "bookings/form", { booking: @booking, product: @product } %>
+      </div>
     </div>
   </div>
 </div>
