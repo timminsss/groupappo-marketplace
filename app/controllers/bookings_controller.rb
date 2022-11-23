@@ -30,8 +30,9 @@ class BookingsController < ApplicationController
   # def destroy
   # end
 
-  # def edit
-  # end
+  def edit
+    @booking = Booking.find(params[:product_id])
+  end
 
   # def update
   # end

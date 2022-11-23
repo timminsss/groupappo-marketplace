@@ -1,2 +1,11 @@
 <h1>Bookings#edit</h1>
 <p>Find me in app/views/bookings/edit.html.erb</p>
+
+<%= simple_form_for(@booking)  do |f| %>
+  <%= hidden_field_tag :user_id, @booking.user_id%>
+  <%= hidden_field_tag :start_date, @booking.start_date%>
+  <%= hidden_field_tag :start_date, @booking.end_date%>
+  <%= hidden_field_tag :start_date, @booking.booking_status%>
+  <%= hidden_field_tag :booking_status, 2%>
+  <%= f.submit "Confirm Booking status"%>
+<% end %>

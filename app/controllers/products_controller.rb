@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     if params[:product][:category].present?
       @products = Product.where(category: params[:product][:category])
     else
-      @products = Product.all
+      @products = Product.where.not(category: "accessories")
     end
   end
 

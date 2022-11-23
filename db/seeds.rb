@@ -35,6 +35,7 @@ bike_category_images = {
   "hybrid bike" => "https://azwest1xfg344.blob.core.windows.net/azwesc1xfg346/thumbnail/9f/b5/8b/1667908877/S_0_60791_580055_S_00_1920x1920.jpg",
   "accessories" => "https://www.pushys.com.au/media/catalog/product/cache/5ac4e4ad447fecc0a8694a493d78cc80/l/e/leatt-enduro-3.0-mtb-helmet-black-l1021010740-par.jpg"
 }
+
 alpha = ('a'..'z').to_a
 first_names = %w(Paul Starr Sebastien Eboni Korbin Marla Julissa Zion Junior Anton Keaton Tre Katie Davon Pamela Teagan Susana Damion Nestor Scott Katerina Javonte Emily Chelsey Jayna Neha Aden Madisyn Maura Reynaldo Jaylen Shayla Zachariah Michael Christin Rochelle Kaeli Salma Gianna Jose Fletcher Rose Felix Jaidyn Trevon Vicente Jared Treyton Anders Mohammed)
 last_names = %w(Devontae Chloe Abriana Barrett Roland Diana Devan Moses Keandre Geovanni Kavon Aaron Ariel Denver Jesse Lianna Frederick Starr Wade Aleena Jayvon Tatyana Stephon Lilianna Melinda Desirae Mikala Breanna Jovanni Weston Annemarie Brennen Alexandrea Caden Dandre Talia Phillip Houston Elisabeth Zachary Jaiden Terri Elexis Ahmed Allison Adrien Carina Yadira Moriah Monique)
