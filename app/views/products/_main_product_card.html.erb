@@ -1,0 +1,35 @@
+
+<div class="container d-flex overflow-hidden rounded">
+  <div class="card-product col-7">
+    <div class="card rounded-lg p-3">
+
+      <div class="">
+          <img src="https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png"
+              class="img-fluid rounded-start" alt="...">
+      </div>
+
+      <div class="">
+        <div class="card-product-infos">
+          <div>
+            <h2><%=product.name.upcase%></h2>
+            <div class="d-flex justify-content-between py-1">
+              <span><%=product.category.capitalize%></span>
+              <span>$<%=product.price%> per day</span>
+            </div>
+          </div>
+          <p class="pt-2"><%=product.description%></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container rounded">
+    <div class="card rounded col-5 p-2 w-100">
+      <h3>Book this bike?</h3>
+      <div class="py-3">
+        <%= render "bookings/form", { booking: @booking, product: @product } %>
+      </div>
+    </div>
+  </div>
+</div>
