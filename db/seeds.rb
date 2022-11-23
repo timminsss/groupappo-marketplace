@@ -30,7 +30,7 @@ User.destroy_all
 puts "Creating new entries"
 
 bike_category_images = {
-  "mountain bike" => "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png",
+  "mountain bike" => "https://d2yn9m4p3q9iyv.cloudfront.net/ghost/2020/sl-amr-4.7-al-u/thumbs/1000/d8151.jpeg",
   "road bike" => "https://archiv.cube.eu/_next/image?url=%2Fmedia%2F2021%2F476410%2F476410_light.jpg&w=3840&q=100",
   "hybrid bike" => "https://azwest1xfg344.blob.core.windows.net/azwesc1xfg346/thumbnail/9f/b5/8b/1667908877/S_0_60791_580055_S_00_1920x1920.jpg",
   "accessories" => "https://www.pushys.com.au/media/catalog/product/cache/5ac4e4ad447fecc0a8694a493d78cc80/l/e/leatt-enduro-3.0-mtb-helmet-black-l1021010740-par.jpg"
