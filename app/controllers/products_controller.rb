@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[edit update show_owner destroy]
 
   def index
-    @products = Product.all
+    @products = Product.where.not(category: "accessories")
   end
 
   def search

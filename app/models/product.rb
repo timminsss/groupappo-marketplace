@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   PRODUCT_TYPE_NAME = %w[bikes helmets shoes locks guards pumps stand straps lights]
 
   belongs_to :user
-  has_many :product_assignments
+  has_many :product_assignments, dependent: :destroy
 
   validates :category, :name, :description, :price, :product_type, presence: true
   validates :category, inclusion: { in: CATEGORY_NAME }

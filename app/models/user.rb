@@ -5,8 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :validatable, :lockable
 
-  has_many :products
-  has_many :bookings
+  has_many :products, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   validates :first_name, :last_name, :zip_code, presence: true
   validates :zip_code, format: { with: /\A\d{5}\z/, message: 'only allows 5 digits' }
