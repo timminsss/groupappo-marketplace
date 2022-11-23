@@ -2,8 +2,13 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bookings = Booking.all
+    @bookings = current_user.bookings
   end
+
+  def index_owner
+    @bookings = current_user.products.map(&:bookings).flatten
+  end
+
 
   def show
   end

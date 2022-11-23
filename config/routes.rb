@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   get "/products/search", to: "products#search"
 
-  get '/my-products', to: 'products#index_owner'
-  get '/my-products/:id', to: 'products#show_owner', as: 'my_product'
+  get '/owner/products', to: 'products#index_owner'
+  get '/owner/products/:id', to: 'products#show_owner', as: 'my_product'
+  get '/owner/bookings', to: 'bookings#index_owner'
   get '/products/show/:id', to: 'products#show'
+
 
 end

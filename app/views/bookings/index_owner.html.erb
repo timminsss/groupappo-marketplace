@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>All your bookings</h1>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Bike</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each_with_index do |booking, index| %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= booking.id %></td>
+        <td><%= booking.user.first_name %></td>
+        <td><%= booking.products.first.name %></td>
+        <td><%= booking.price %></td>
+        <td><%= booking.booking_status %></td>
+        <td class="d-flex">
+          <%= link_to root_path do %>
+            <i class="fa-regular fa-folder-open me-3"></i>
+          <% end %>
+          <%= link_to root_path do %>
+            <i class="fa-solid fa-pen-to-square me-3"></i>
+          <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

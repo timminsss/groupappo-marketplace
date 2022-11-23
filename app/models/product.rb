@@ -4,6 +4,7 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_many :product_assignments, dependent: :destroy
+  has_many :bookings, through: :product_assignments
 
   validates :category, :name, :description, :price, :product_type, presence: true
   validates :category, inclusion: { in: CATEGORY_NAME }

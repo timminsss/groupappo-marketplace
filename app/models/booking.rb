@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   has_many :product_assignments, dependent: :destroy
+  has_many :products, through: :product_assignments
 
   validates :start_date, :end_date, :booking_status, presence: true
   validates :end_date, comparison: { greater_than_or_equal_to: :start_date }

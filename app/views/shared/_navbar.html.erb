@@ -15,7 +15,11 @@
           </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Owner view", my_products_path, class: "nav-link" %>
+            <p class="nav-link mb-0", id="navbarDropdown", data-bs-toggle="dropdown", aria-haspopup="true", aria-expanded="false">Owner view</p>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "My products", owner_products_path, class: "dropdown-item" %>
+              <%= link_to "My bookings", owner_bookings_path, class: "dropdown-item" %>
+            </div>
           </li>
         </ul>
       <ul class="navbar-nav me-auto">
