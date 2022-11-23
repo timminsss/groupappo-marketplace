@@ -1,27 +1,48 @@
 
-<div class="card mb-6 m-4 mx-auto" style="max-width: 650px;">
-  <div class="row g-0 overflow-hidden" >
-    <div class="col-md-6">
-      <img src="https://www.vulyplay.com/img/sizes/123-web.jpg" class="img-fluid rounded-start" alt="...">
-      <p class="card-text"><small class="text-muted"><%=product.category%></small></p>
-    </div>
-    <div class="col-md-6">
-      <div class="card-body overflow-hidden">
-        <h5 class="card-title"><%=product.name%></h5>
-        <p class="card-text overflow-hidden" style="height: 150px;"><%=product.description%></p>
-          <div class="row g-0 overflow-hidden text-right" >
-            <div class="col-md-6">
-              <p class="card-text"><small class="text-muted">Rating</small>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-star" viewBox="0 0 16 16">
-                  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                </svg>
-                </p>
-            </div>
-            <div class="col-md-6 text-md-end">$<%=product.price%>
-            </div>
-          </div>
-          <a href="#" class="btn btn-primary text-right m-2">Add to Cart</a>
+<div class="container d-flex overflow-hidden p-3">
+  <div class="card-product col-7">
+    <div class="card rounded-lg p-3">
+
+      <div class="">
+          <img src="https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png"
+              class="img-fluid rounded-start" alt="...">
       </div>
+
+      <div class="">
+        <div class="card-product-infos">
+          <div>
+            <h2><%=product.name.upcase%></h2>
+            <p><%=product.category%></p>
+          </div>
+          <p class="card-pricing">$<%=product.price%> per day</p>
+          <p class="card-description"><%=product.description%></p>
+        </div>
+      </div>
+
     </div>
+  </div>
+
+  <div class="container">
+    <div class="card-booking col-5 p-2">
+      <%= render "bookings/form", { booking: @booking, product: @product } %>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5 overflow-hidden">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <% products = Product.all %>
+  <% products.search do |product| %>
+    <% if product.product_type != :bike %>
+        <div class="col">
+          <div class="p-3 border bg-light">
+            <img src="https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png"
+                  class="img-fluid rounded-start" alt="...">
+            <h3> <%= product.name %> </h3>
+            <p> <%= product.description %> </p>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
   </div>
 </div>
