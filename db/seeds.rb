@@ -36,104 +36,164 @@ bike_category_images = {
   "accessories" => "https://www.pushys.com.au/media/catalog/product/cache/5ac4e4ad447fecc0a8694a493d78cc80/l/e/leatt-enduro-3.0-mtb-helmet-black-l1021010740-par.jpg"
 }
 
-alpha = ('a'..'z').to_a
-first_names = %w(Paul Starr Sebastien Eboni Korbin Marla Julissa Zion Junior Anton Keaton Tre Katie Davon Pamela Teagan Susana Damion Nestor Scott Katerina Javonte Emily Chelsey Jayna Neha Aden Madisyn Maura Reynaldo Jaylen Shayla Zachariah Michael Christin Rochelle Kaeli Salma Gianna Jose Fletcher Rose Felix Jaidyn Trevon Vicente Jared Treyton Anders Mohammed)
-last_names = %w(Devontae Chloe Abriana Barrett Roland Diana Devan Moses Keandre Geovanni Kavon Aaron Ariel Denver Jesse Lianna Frederick Starr Wade Aleena Jayvon Tatyana Stephon Lilianna Melinda Desirae Mikala Breanna Jovanni Weston Annemarie Brennen Alexandrea Caden Dandre Talia Phillip Houston Elisabeth Zachary Jaiden Terri Elexis Ahmed Allison Adrien Carina Yadira Moriah Monique)
-# GENERATING THE USERS
-puts "Seed started Generating the users"
-# DEFAULT USERS ARE GENERATED HERE
-# DEFAULT USERS ARE GENERATED HERE
-User.create(
-  first_name: "joh",
-  last_name: "doe",
-  zip_code: 12345,
-  email: "user1@example.com",
-  password: "password"
-)
-User.create(
-  first_name: "bruce",
-  last_name: "wayne",
-  zip_code: 12345,
-  email: "user2@example.com",
-  password: "password"
-)
-User.create(
-  first_name: "Jolene",
-  last_name: "sing",
-  zip_code: 12345,
-  email: "user3@example.com",
-  password: "password"
-)
-# DEFAULT USERS ARE GENERATED ABOVE HERE
-# DEFAULT USERS ARE GENERATED ABOVE HERE
-20.times do
-  f_name = "#{first_names.sample}#{alpha.sample}"
-  l_name = "#{last_names.sample}#{alpha.sample}"
-  User.create(
-    first_name: "#{f_name}",
-    last_name: "#{l_name}",
-    zip_code: 12345,
-    email: "#{f_name}.#{l_name}@example.com",
-    password: "password"
+# <<<<<<< HEAD
+# alpha = ('a'..'z').to_a
+# first_names = %w(Paul Starr Sebastien Eboni Korbin Marla Julissa Zion Junior Anton Keaton Tre Katie Davon Pamela Teagan Susana Damion Nestor Scott Katerina Javonte Emily Chelsey Jayna Neha Aden Madisyn Maura Reynaldo Jaylen Shayla Zachariah Michael Christin Rochelle Kaeli Salma Gianna Jose Fletcher Rose Felix Jaidyn Trevon Vicente Jared Treyton Anders Mohammed)
+# last_names = %w(Devontae Chloe Abriana Barrett Roland Diana Devan Moses Keandre Geovanni Kavon Aaron Ariel Denver Jesse Lianna Frederick Starr Wade Aleena Jayvon Tatyana Stephon Lilianna Melinda Desirae Mikala Breanna Jovanni Weston Annemarie Brennen Alexandrea Caden Dandre Talia Phillip Houston Elisabeth Zachary Jaiden Terri Elexis Ahmed Allison Adrien Carina Yadira Moriah Monique)
+# # GENERATING THE USERS
+# puts "Seed started Generating the users"
+# # DEFAULT USERS ARE GENERATED HERE
+# # DEFAULT USERS ARE GENERATED HERE
+# User.create(
+#   first_name: "joh",
+#   last_name: "doe",
+#   zip_code: 12345,
+#   email: "user1@example.com",
+#   password: "password"
+# )
+# User.create(
+#   first_name: "bruce",
+#   last_name: "wayne",
+#   zip_code: 12345,
+#   email: "user2@example.com",
+#   password: "password"
+# )
+# User.create(
+#   first_name: "Jolene",
+#   last_name: "sing",
+#   zip_code: 12345,
+#   email: "user3@example.com",
+#   password: "password"
+# )
+# # DEFAULT USERS ARE GENERATED ABOVE HERE
+# # DEFAULT USERS ARE GENERATED ABOVE HERE
+# 20.times do
+#   f_name = "#{first_names.sample}#{alpha.sample}"
+#   l_name = "#{last_names.sample}#{alpha.sample}"
+#   User.create(
+#     first_name: "#{f_name}",
+#     last_name: "#{l_name}",
+#     zip_code: 12345,
+#     email: "#{f_name}.#{l_name}@example.com",
+#     password: "password"
+# =======
+
+owner = User.new(first_name: "John", last_name: "Doe", zip_code: 12345, email: "owner@example.com", password: "Pass1234")
+owner.save
+
+customer = User.new(first_name: "Harley", last_name: "Quin", zip_code: 12345, email: "customer@example.com", password: "Pass1234")
+customer.save
+
+puts "Users created"
+
+2.times do
+  category = Product::CATEGORY_NAME.sample
+  product_image_url = bike_category_images[category]
+  Product.create(
+    user: owner,
+    category: category,
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    price: rand(50..100),
+    image_url: product_image_url,
+    product_type: "bike"
   )
-  puts "Users Created name #{User.last.first_name} - #{User.last.last_name}"
-  puts "Users Created email #{User.last.email}"
-  puts "__________________________________________________"
 end
-puts "Users Created #{User.count}"
-sleep(2)
-# GENERATING THE PRODUCTS
-puts "Generating the products"
-users = User.first(5)
-users.each do |user|
-  10.times do
-    bike_category = Product::CATEGORY_NAME.sample
-    bike_url = bike_category_images[bike_category]
-    product_type_input = ""
-    if bike_category == "accessories"
-      product_type_input = Product::PRODUCT_TYPE_NAME.sample
-    else
-      product_type_input = "bike"
-    end
-    Product.create(
-      user_id: user.id,
-      category: bike_category,
-      name: Faker::Name.name,
-      description: Faker::Lorem.paragraph,
-      price: rand(50..100),
-      image_url: bike_url,
-      product_type: product_type_input
-    )
-    puts "#{Product.last.id}#{Product.last.user_id} - #{Product.last.category} - #{Product.last.name}"
-  end
-end
-puts "Products Created #{Product.count}"
-sleep(2)
-# GENERATING THE BOOKINGS
-puts "Generating the bookings"
-users_b = User.last(10)
-users_b.each do |user_b|
+
+puts "Products created"
+
+2.times do
   Booking.create(
-    user_id: user_b.id,
+    user: customer,
     start_date: DateTime.now,
-    end_date: (DateTime.now + rand(1..5)),
-    price: 0,
-    booking_status: 0
+    end_date: (DateTime.now + rand(1..5))
   )
-  puts "#{Booking.last.id} - #{Booking.last.user_id} - #{Booking.last.start_date} - #{Booking.last.end_date}"
 end
-puts "Bookings Created #{Booking.count}"
-sleep(2)
-# GENERATING THE PRODUCTASSIGNMENTSD
-puts "Generating the ProductAssignment"
-bookings = Booking.all
-products = Product.all
-bookings.each do |booking|
-  products.sample.id
+
+puts "Bookings created"
+
+Booking.all.each do |booking|
   ProductAssignment.create(
-    product_id: products.sample.id,
-    booking_id: booking.id
+    product: Product.all.sample,
+    booking: booking
   )
-  puts "#{ProductAssignment.last.id} - #{ProductAssignment.last.product_id} - #{ProductAssignment.last.booking_id}"
 end
-puts "ProductAssignment Created #{ProductAssignment.count}"
+
+puts "Product assignments created"
+
+# alpha = ('a'..'z').to_a
+# first_names = %w(Paul Starr Sebastien Eboni Korbin Marla Julissa Zion Junior Anton Keaton Tre Katie Davon Pamela Teagan Susana Damion Nestor Scott Katerina Javonte Emily Chelsey Jayna Neha Aden Madisyn Maura Reynaldo Jaylen Shayla Zachariah Michael Christin Rochelle Kaeli Salma Gianna Jose Fletcher Rose Felix Jaidyn Trevon Vicente Jared Treyton Anders Mohammed)
+# last_names = %w(Devontae Chloe Abriana Barrett Roland Diana Devan Moses Keandre Geovanni Kavon Aaron Ariel Denver Jesse Lianna Frederick Starr Wade Aleena Jayvon Tatyana Stephon Lilianna Melinda Desirae Mikala Breanna Jovanni Weston Annemarie Brennen Alexandrea Caden Dandre Talia Phillip Houston Elisabeth Zachary Jaiden Terri Elexis Ahmed Allison Adrien Carina Yadira Moriah Monique)
+# # GENERATING THE USERS
+# puts "Seed started Generating the users"
+# 20.times do
+#   f_name = "#{first_names.sample}#{alpha.sample}"
+#   l_name = "#{last_names.sample}#{alpha.sample}"
+#   User.create(
+#     first_name: "#{f_name}",
+#     last_name: "#{l_name}",
+#     zip_code: 12345,
+#     email: "#{f_name}.#{l_name}@example.com",
+#     password: "password"
+#   )
+#   puts "Users Created name #{User.last.first_name} - #{User.last.last_name}"
+#   puts "Users Created email #{User.last.email}"
+#   puts "__________________________________________________"
+# end
+# puts "Users Created #{User.count}"
+# sleep(2)
+# # GENERATING THE PRODUCTS
+# puts "Generating the products"
+# users = User.first(5)
+# users.each do |user|
+#   10.times do
+#     bike_category = Product::CATEGORY_NAME.sample
+#     bike_url = bike_category_images[bike_category]
+#     product_type_input = ""
+#     if bike_category == "accessories"
+#       product_type_input = Product::PRODUCT_TYPE_NAME.sample
+#     else
+#       product_type_input = "bike"
+#     end
+#     Product.create(
+#       user_id: user.id,
+#       category: bike_category,
+#       name: Faker::Name.name,
+#       description: Faker::Lorem.paragraph,
+#       price: rand(50..100),
+#       image_url: bike_url,
+#       product_type: product_type_input
+#     )
+#     puts "#{Product.last.id}#{Product.last.user_id} - #{Product.last.category} - #{Product.last.name}"
+#   end
+# end
+# puts "Products Created #{Product.count}"
+# sleep(2)
+# # GENERATING THE BOOKINGS
+# puts "Generating the bookings"
+# users_b = User.last(10)
+# users_b.each do |user_b|
+#   Booking.create(
+#     user_id: user_b.id,
+#     start_date: DateTime.now,
+#     end_date: (DateTime.now + rand(1..5)),
+#     price: 0,
+#     booking_status: 0
+#   )
+#   puts "#{Booking.last.id} - #{Booking.last.user_id} - #{Booking.last.start_date} - #{Booking.last.end_date}"
+# end
+# puts "Bookings Created #{Booking.count}"
+# sleep(2)
+# # GENERATING THE PRODUCTASSIGNMENTSD
+# puts "Generating the ProductAssignment"
+# bookings = Booking.all
+# products = Product.all
+# bookings.each do |booking|
+#   products.sample.id
+#   ProductAssignment.create(
+#     product_id: products.sample.id,
+#     booking_id: booking.id
+#   )
+#   puts "#{ProductAssignment.last.id} - #{ProductAssignment.last.product_id} - #{ProductAssignment.last.booking_id}"
+# end
+# puts "ProductAssignment Created #{ProductAssignment.count}"
