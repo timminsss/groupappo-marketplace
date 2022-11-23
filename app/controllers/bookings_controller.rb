@@ -48,7 +48,6 @@ class BookingsController < ApplicationController
     redirect_to owner_booking_path
     # if current_user == @booking.user
 
-
     # else
     #   render :show_owner, alert: "not authorized to perform this action...wrote this myself, not pundit"
     # end
