@@ -20,6 +20,15 @@ require 'pry-byebug'
 # Product::CATEGORY_NAME
 # Creates 20 new users for the database
 
+puts "Cleaning database"
+
+User.destroy_all
+
+
+
+
+puts "Creating new entries"
+
 bike_category_images = {
   "mountain bike" => "https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png",
   "road bike" => "https://archiv.cube.eu/_next/image?url=%2Fmedia%2F2021%2F476410%2F476410_light.jpg&w=3840&q=100",
@@ -91,7 +100,6 @@ puts "Bookings Created #{Booking.count}"
 sleep(2)
 # GENERATING THE PRODUCTASSIGNMENTSD
 puts "Generating the ProductAssignment"
-puts "Bookings Created #{Product.count}"
 bookings = Booking.all
 products = Product.all
 bookings.each do |booking|
