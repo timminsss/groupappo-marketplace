@@ -1,0 +1,68 @@
+
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div class="mb-3">
+    <h1>Details on Booking with ID <%= @booking.id %></h1>
+    <p ><%= @booking.start_date %> - <%= @booking.end_date %></p>
+  </div>
+  <div>
+    I need to change this badge to sth with color <%= @booking.booking_status  %>
+    <%= render 'shared/status', booking_status:  @booking.booking_status %>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-12 col-lg-9">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Attribute</th>
+          <th scope="col">Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Start
+          </td>
+          <td>
+            <%=  @booking.start_date %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            End
+          </td>
+          <td>
+            <%=  @booking.end_date %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Price
+          </td>
+          <td>
+            <%=  @booking.price %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Products
+          </td>
+          <td>
+            <ul>
+            <% @booking.products.each do |product| %>
+            <li> <%= link_to product.name, owner_product_path(product) %></li>
+            <% end %>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 col-lg-3">
+    <form method="PATCH" action="<%= owner_confirm_path(@booking) %>", class=""><input type="submit", class="btn btn-primary w-100 m-2", value="Mark as confirmed"></form>
+    <br>
+    <form method="PATCH" action="<%= owner_decline_path(@booking) %>", class=""><input type="submit", class="btn btn-primary w-100 m-2", value="Mark as declined"></form>
+  </div>
+</div>

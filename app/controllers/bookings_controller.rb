@@ -1,11 +1,22 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: %i[show confirm decline]
 
   def index
-    @bookings = Booking.all
+    @bookings = current_user.bookings
   end
 
+  def index_owner
+    @bookings = current_user.products.map(&:bookings).flatten
+  end
+
+
   def show
+  end
+
+  def show_owner
+    @booking = Booking.find(params[:id])
+    # needs to be refactored with pundit - acces to the booking only possible if
+    # owner = owner of product related to booking
   end
 
   def new
@@ -19,7 +30,6 @@ class BookingsController < ApplicationController
 
     @product = Product.find(params[:product_id])
     if @booking.save
-      @booking.update(booking_status: 1)
       @product_assignment_controller.create(@product, @booking)
       redirect_to booking_path(@booking)
     else
@@ -33,8 +43,21 @@ class BookingsController < ApplicationController
   # def edit
   # end
 
-  # def update
-  # end
+  def confirm
+    @booking.update(booking_status: "confirmed")
+    redirect_to owner_booking_path
+    # if current_user == @booking.user
+
+    # else
+    #   render :show_owner, alert: "not authorized to perform this action...wrote this myself, not pundit"
+    # end
+    # needs to be refactored with pundit
+  end
+
+  def decline
+    @booking.update(booking_status: "declined")
+    redirect_to owner_booking_path
+  end
 
   private
 
