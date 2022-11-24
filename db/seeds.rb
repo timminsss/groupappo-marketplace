@@ -36,6 +36,47 @@ bike_category_images = {
   "accessories" => "https://www.pushys.com.au/media/catalog/product/cache/5ac4e4ad447fecc0a8694a493d78cc80/l/e/leatt-enduro-3.0-mtb-helmet-black-l1021010740-par.jpg"
 }
 
+# <<<<<<< HEAD
+# alpha = ('a'..'z').to_a
+# first_names = %w(Paul Starr Sebastien Eboni Korbin Marla Julissa Zion Junior Anton Keaton Tre Katie Davon Pamela Teagan Susana Damion Nestor Scott Katerina Javonte Emily Chelsey Jayna Neha Aden Madisyn Maura Reynaldo Jaylen Shayla Zachariah Michael Christin Rochelle Kaeli Salma Gianna Jose Fletcher Rose Felix Jaidyn Trevon Vicente Jared Treyton Anders Mohammed)
+# last_names = %w(Devontae Chloe Abriana Barrett Roland Diana Devan Moses Keandre Geovanni Kavon Aaron Ariel Denver Jesse Lianna Frederick Starr Wade Aleena Jayvon Tatyana Stephon Lilianna Melinda Desirae Mikala Breanna Jovanni Weston Annemarie Brennen Alexandrea Caden Dandre Talia Phillip Houston Elisabeth Zachary Jaiden Terri Elexis Ahmed Allison Adrien Carina Yadira Moriah Monique)
+# # GENERATING THE USERS
+# puts "Seed started Generating the users"
+# # DEFAULT USERS ARE GENERATED HERE
+# # DEFAULT USERS ARE GENERATED HERE
+# User.create(
+#   first_name: "joh",
+#   last_name: "doe",
+#   zip_code: 12345,
+#   email: "user1@example.com",
+#   password: "password"
+# )
+# User.create(
+#   first_name: "bruce",
+#   last_name: "wayne",
+#   zip_code: 12345,
+#   email: "user2@example.com",
+#   password: "password"
+# )
+# User.create(
+#   first_name: "Jolene",
+#   last_name: "sing",
+#   zip_code: 12345,
+#   email: "user3@example.com",
+#   password: "password"
+# )
+# # DEFAULT USERS ARE GENERATED ABOVE HERE
+# # DEFAULT USERS ARE GENERATED ABOVE HERE
+# 20.times do
+#   f_name = "#{first_names.sample}#{alpha.sample}"
+#   l_name = "#{last_names.sample}#{alpha.sample}"
+#   User.create(
+#     first_name: "#{f_name}",
+#     last_name: "#{l_name}",
+#     zip_code: 12345,
+#     email: "#{f_name}.#{l_name}@example.com",
+#     password: "password"
+# =======
 
 owner = User.new(first_name: "John", last_name: "Doe", zip_code: 12345, email: "owner@example.com", password: "Pass1234")
 owner.save
