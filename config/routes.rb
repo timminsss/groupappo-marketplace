@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :product_assignments, only: [:destroy]
 
+  post 'product_assignments', to: 'product_assignments#create'
+
   get "/products/search", to: "products#search"
   # get "/products/:id/booking", to: "products#show_booked", as: "product_show_booked"
 
@@ -18,6 +20,4 @@ Rails.application.routes.draw do
   get '/owner/bookings/:id', to: 'bookings#show_owner', as: 'owner_booking'
   patch '/owner/bookings/:id/confirm', to: 'bookings#confirm', as: 'owner_confirm'
   patch '/owner/bookings/:id/decline', to: 'bookings#decline', as: 'owner_decline'
-
-
 end

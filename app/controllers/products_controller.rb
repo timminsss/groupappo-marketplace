@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @product_assignment = ProductAssignment.new
   end
 
   def new
@@ -45,7 +46,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to my_product_path(@product)
+      redirect_to owner_product_path(@product)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -53,7 +54,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to my_products_path, status: :see_other
+    redirect_to owner_products_path, status: :see_other
   end
 
   private

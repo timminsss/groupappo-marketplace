@@ -1,5 +1,6 @@
 <div class="container my-5 overflow-hidden rounded justify-content-center px-3">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<<<<<<< HEAD
   <% products =Product.where(category: "accessories", user_id: product.user_id).first(3) %>
   <% products.each do |product| %>
         <div class="col-4 overflow-hidden">
@@ -16,6 +17,24 @@
             <div>
               <%= link_to "Add to Booking", booking_path, { class: "btn btn-primary w-100" } %>
             </div>
+=======
+
+  <% accessoires = Product.where(user_id: product.user_id )%>
+  <% counter = 3  %>
+  <% accessoires.each do |accessoire| %>
+    <% if accessoire.product_type != "bike" %>
+        <div class="col-3">
+          <div class="p-3 border bg-light">
+            <img src="https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png"
+                  class="img-fluid rounded-start" alt="..." width="100px">
+            <h4> <%= accessoire.name %> </h4>
+            <p> <%= accessoire.product_type %> </p>
+            <p> <%= accessoire.user_id %> </p>
+            <p><small> <%= accessoire.description %> </small></p>
+          <% if product.bookings %>
+            <%= render 'product_assignments/new', product: product  %>
+          <% end %>
+>>>>>>> master
           </div>
         </div>
   <% end %>
