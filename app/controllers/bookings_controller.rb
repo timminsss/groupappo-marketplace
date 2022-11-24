@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
 
     @product = Product.find(params[:product_id])
     if @booking.save
-      @product_assignment_controller.create(@product, @booking)
+      @product_assignment_controller.create_bike(@product, @booking)
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
