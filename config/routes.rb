@@ -17,6 +17,4 @@ Rails.application.routes.draw do
   get '/owner/bookings/:id', to: 'bookings#show_owner', as: 'owner_booking'
   patch '/owner/bookings/:id/confirm', to: 'bookings#confirm', as: 'owner_confirm'
   patch '/owner/bookings/:id/decline', to: 'bookings#decline', as: 'owner_decline'
-
-
 end
