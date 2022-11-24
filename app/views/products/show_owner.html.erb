@@ -18,7 +18,7 @@
             Picture
           </td>
           <td>
-            <%=  image_tag @product.image_url, style: "width:100%;" %>
+            <%= cl_image_tag @product.photo.key, height: 300, width: 400, crop: :fill %>
           </td>
           <tr>
           <td>
