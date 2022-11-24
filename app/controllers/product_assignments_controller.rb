@@ -5,6 +5,7 @@ class ProductAssignmentsController < ApplicationController
   def create
     @product_assignment = ProductAssignment.new(product_assignment_params)
     if @product_assignment.save
+      @product_assignment.booking.update_price
       redirect_to product_path(params[:product_id])
     else
       render 'products/show', alert: 'sth went wrong'
@@ -14,6 +15,7 @@ class ProductAssignmentsController < ApplicationController
   def create_bike(product, booking)
     @product_assignment = ProductAssignment.new(product: product, booking: booking)
     @product_assignment.save
+    booking.update_price
   end
 
   def destroy

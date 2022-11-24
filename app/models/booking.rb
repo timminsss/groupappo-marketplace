@@ -8,4 +8,13 @@ class Booking < ApplicationRecord
   validates :start_date, comparison: { greater_than_or_equal_to: Date.today }
 
   enum :booking_status, { draft: 0, unconfirmed: 1, confirmed: 2, completed: 3, declined: 4 }, default: :draft
+
+  def update_price
+    price_per_day = 0
+    products.each do |product|
+      price_per_day += product.price
+    end
+    total = price_per_day * 1
+    update(price: total)
+  end
 end
