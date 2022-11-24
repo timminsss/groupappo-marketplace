@@ -23,7 +23,7 @@ require 'pry-byebug'
 puts "Cleaning database"
 
 User.destroy_all
-
+ProductAssignment.destroy_all
 
 
 

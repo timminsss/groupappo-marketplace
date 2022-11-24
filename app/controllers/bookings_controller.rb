@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show confirm decline edit]
+  before_action :set_booking, only: %i[show confirm decline edit booking_days]
 
   def index
     # includes loads all the products into memory so you dont have to make alot of sql queries
@@ -32,9 +32,10 @@ class BookingsController < ApplicationController
     @product = Product.find(params[:product_id])
     if @booking.save
       @product_assignment_controller.create_bike(@product, @booking)
-      redirect_to booking_path(@booking)
+      redirect_to product_path(@product), alert: "Booking has been created"
     else
-      render :new, status: :unprocessable_entity
+      render "products/show", status: :unprocessable_entity
+
     end
   end
 

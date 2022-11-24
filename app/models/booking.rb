@@ -9,6 +9,10 @@ class Booking < ApplicationRecord
 
   enum :booking_status, { draft: 0, unconfirmed: 1, confirmed: 2, completed: 3, declined: 4 }, default: :draft
 
+  def booking_days
+    ((end_date - start_date) / 86_400).round(0)
+  end
+
   def update_price
     price_per_day = 0
     products.each do |product|

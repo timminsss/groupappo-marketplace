@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'product_assignments', to: 'product_assignments#create'
 
   get "/products/search", to: "products#search"
+  # get "/products/:id/booking", to: "products#show_booked", as: "product_show_booked"
 
   get '/owner/products', to: 'products#index_owner'
   get '/owner/products/:id', to: 'products#show_owner', as: 'owner_product'
