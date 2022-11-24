@@ -2,11 +2,35 @@
 
 <h1>These are your bookings</h1>
 <% @bookings.each do |booking| %>
-  <div class="card border p-3 m-2">
-    <img src=" <%= %> " alt="">
-    <p> <%= booking.booking_status %> </p>
-    <p> $ <%= booking.price %> </p>
-    <p> <%= booking.start_date.strftime('%d/%m/%Y %H:%M') %> - <%= booking.end_date.strftime('%d/%m/%Y %H:%M') %> </p>
+  <div class="card my-4">
+    <h5 class="card-header"><%= render "shared/status", booking_status:  booking.booking_status %></h5>
+    <div class="card-body">
+      <h5 class="card-title"><%= booking.start_date.strftime('%d/%m/%Y %H:%M') %> - <%= booking.end_date.strftime('%d/%m/%Y %H:%M') %> </h5>
+      <p class="card-text">Bellow is a list of item associated with this listing</p>
+      <%# item list%>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%# You can call the list of products directly for each booking because of the relationship %>
+        <% booking.products.each do | product |%>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.category %></td>
+          </tr>
+        <%end%>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="card col-2 m-3">Total: $<%=booking.price%>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary">See Booking</a>
+    </div>
   </div>
 <% end %>
 </div>

@@ -1,18 +1,21 @@
 <div class="container my-5 overflow-hidden rounded">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
 
-  <% products = Product.where(user_id: @product.user_id )%>
-  <% counter = 0  %>
-  <% products.each do |product| %>
-    <% if product.product_type != "bike" %>
+  <% accessoires = Product.where(user_id: product.user_id )%>
+  <% counter = 3  %>
+  <% accessoires.each do |accessoire| %>
+    <% if accessoire.product_type != "bike" %>
         <div class="col-3">
           <div class="p-3 border bg-light">
             <img src="https://www.ghost-bikes.com/fileadmin/user_upload/ghostbikes_2020/BIKES/65SL1008_PY19_SLAMR_4-7_AL_U_CLASSICTAN_JETBLACK.png"
                   class="img-fluid rounded-start" alt="..." width="100px">
-            <h4> <%= product.name %> </h4>
-            <p> <%= product.product_type %> </p>
-            <p> <%= product.user_id %> </p>
-            <p><small> <%= product.description %> </small></p>
+            <h4> <%= accessoire.name %> </h4>
+            <p> <%= accessoire.product_type %> </p>
+            <p> <%= accessoire.user_id %> </p>
+            <p><small> <%= accessoire.description %> </small></p>
+          <% if product.bookings %>
+            <%= render 'product_assignments/new', product: product  %>
+          <% end %>
           </div>
         </div>
     <% end %>

@@ -2,7 +2,8 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show confirm decline edit]
 
   def index
-    @bookings = current_user.bookings
+    # includes loads all the products into memory so you dont have to make alot of sql queries
+    @bookings = current_user.bookings.includes(:products)
   end
 
   def index_owner
@@ -30,29 +31,16 @@ class BookingsController < ApplicationController
 
     @product = Product.find(params[:product_id])
     if @booking.save
-      @product_assignment_controller.create(@product, @booking)
+      @product_assignment_controller.create_bike(@product, @booking)
       redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # def destroy
-  # end
-
-  # def edit
-  # set_booking is applied at before action
-  # end
-
   def confirm
     @booking.update(booking_status: "confirmed")
     redirect_to owner_booking_path
-    # if current_user == @booking.user
-
-    # else
-    #   render :show_owner, alert: "not authorized to perform this action...wrote this myself, not pundit"
-    # end
-    # needs to be refactored with pundit
   end
 
   def decline
