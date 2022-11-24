@@ -1,6 +1,16 @@
 <%= simple_form_for [booking] do |f| %>
   <%= f.input :start_date, as: :string, input_html: {class: "datepicker"} %>
   <%= f.input :end_date, as: :string, input_html: {class: "datepicker"} %>
-  <%= f.submit nil, { class: "btn btn-primary w-100" } %>
+  <% if current_user %>
+    <%= f.submit nil, { class: "btn btn-primary w-100" } %>
+  <% else %>
+    <div class="w-100 justify-content-center">
+      <%= link_to 'Login to create a booking', new_user_session_path, class: "btn btn-primary" %><br>
+      <div class="d-flex align-items-baseline">
+        <p>No account yet?</p>
+        <%= link_to 'Register now', new_user_registration_path, class: "btn btn-link" %>
+      </div>
+    </div>
+  <% end %>
   <%= hidden_field_tag :product_id, @product.id %>
 <% end %>
