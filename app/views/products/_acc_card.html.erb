@@ -9,12 +9,18 @@
                   <img src="<%= image_url %>" class="img-fluid rounded-start pb-2" alt="..." width="100px">
               <div class="">
                 <h4> <%= product.name.upcase %> </h4>
-                <h6> <%= product.product_type.capitalize %> </h6>
-                <p><small> <%= product.description %> </small></p>
+                <div class="d-flex align-items-baseline mb-3">
+                  <h6> <%= product.product_type.capitalize %> </h6>
+                  <button type="button" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= product.description %>">
+                    <i class="fa-sharp fa-solid fa-circle-info"></i>
+                  </button>
+                </div>
               </div>
             </div>
-            <div>
-
+            <div class="d-flex">
+              <div class="row g-0 overflow-hidden text-end pe-3" >
+                <h6 class="mb-0">$<%=product.price%></h6><p style="font-size:8px;"> per Day</p>
+              </div>
               <%= render 'product_assignments/new', product: product  %>
             </div>
           </div>

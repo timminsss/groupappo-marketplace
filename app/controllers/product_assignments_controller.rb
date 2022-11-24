@@ -20,6 +20,7 @@ class ProductAssignmentsController < ApplicationController
 
   def destroy
     @product_assignment.destroy
+    redirect_to product_booking_path(product_id: :product_id, id: :booking_id)
   end
 
   private

@@ -23,3 +23,18 @@
   </div>
 
   <%= render "products/show_product_booking_form", product: @product %>
+</div>
+<div class="row">
+  <div class="card-product">
+    <h2>Your previous bookings</h2>
+    <% if current_user %>
+      <ul>
+        <% product.bookings.each do |booking| %>
+          <li><%= booking.id %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      Too see previous bookings, please login or register.
+    <% end %>
+  </div>
+</div>
