@@ -1,6 +1,7 @@
 <div class="container my-5 overflow-hidden rounded">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-  <% products =Product.where(category: "accessories").first(3) %>
+
+  <% products = Product.where(user_id: @product.user_id )%>
   <% counter = 0  %>
   <% products.each do |product| %>
     <% if product.product_type != "bike" %>
@@ -10,6 +11,7 @@
                   class="img-fluid rounded-start" alt="..." width="100px">
             <h4> <%= product.name %> </h4>
             <p> <%= product.product_type %> </p>
+            <p> <%= product.user_id %> </p>
             <p><small> <%= product.description %> </small></p>
           </div>
         </div>

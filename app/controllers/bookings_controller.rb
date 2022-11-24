@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show confirm decline]
+  before_action :set_booking, only: %i[show confirm decline edit]
 
   def index
     @bookings = current_user.bookings
@@ -41,6 +41,7 @@ class BookingsController < ApplicationController
   # end
 
   # def edit
+  # set_booking is applied at before action
   # end
 
   def confirm
