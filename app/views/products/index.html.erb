@@ -1,5 +1,4 @@
 <div data-controller="filter">
-  Filter by category
   <div id="categories" class="d-flex">
     <button data-action="click->filter#applyFilter"
             data-filter-target="button"
@@ -15,17 +14,16 @@
             </button>
     <button data-action="click->filter#applyFilter"
             data-filter-target="button"
-            data-filter="Hybrid bike"
+            data-filter="hybrid bike"
             class="btn btn-secondary">
             Hybrid Bikes
             </button>
   </div>
-<div>
-
-  </div data-filter-target="bikesContainer">
+  <div data-filter-target="bikesContainer">
     <% @products.each do |product| %>
-      <div data-category=""<%= product.category %>>
+      <div data-category="<%= product.category %>">
         <%= render "index_card", product: product %>
       </div>
     <%end%>
+  </div>
 </div>

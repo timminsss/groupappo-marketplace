@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import Isotope from "isotope-layout"
-let selectedBike = ''
+let selectedCategory = ''
 
 export default class extends Controller {
   static targets = ["bikesContainer", "button"]
@@ -9,12 +9,14 @@ export default class extends Controller {
     console.log("Hello from the filter side!")
     this.setupFilters()
     this.initIsotope()
-    this.activeClasses = "btn btn-primary active"
+    this.activeClasses = ["btn", "btn-primary", "active"]
+    debugger
   }
 
   initIsotope() {
     const options = {}
-    this.isotope = new Isotope( this.playersContainerTarget, options)
+    this.isotope = new Isotope( this.bikesContainerTarget, options)
+    console.log(this.isotope)
   }
 
   setupFilters() {
@@ -22,10 +24,11 @@ export default class extends Controller {
       // show if number is greater than 50
       category: ( itemElem ) => {
                               const bikeCategory = itemElem.dataset.category
-                              return bikeCategory === selectedCategory;
+                              return bikeCategory === this.selectedCategory;
                             },
     }
   }
+
   applyActiveClass(button) {
     this.activeClasses.forEach((className) => {
       button.classList.add(className)
@@ -43,7 +46,8 @@ export default class extends Controller {
     applyFilter(event) {
       this.removeActiveClasses()
       const clickedButton = event.currentTarget
-      selectedCategory = clickedButton.dataset.filter
+      this.selectedCategory = clickedButton.dataset.filter
+
       this.applyActiveClass(clickedButton)
 
       this.isotope.arrange({ filter: this.filters['category'] });
