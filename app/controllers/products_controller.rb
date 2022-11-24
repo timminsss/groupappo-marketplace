@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index search show]
-  before_action :set_product, only: %i[edit update show_owner destroy]
+  before_action :set_product, only: %i[edit update show_owner show destroy]
 
   def index
     @products = Product.where.not(category: "accessories")
@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
     @booking = Booking.new
   end
 

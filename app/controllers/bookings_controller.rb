@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show confirm decline edit]
+  before_action :set_booking, only: %i[show confirm decline edit booking_days]
 
   def index
     @bookings = current_user.bookings
@@ -31,15 +31,16 @@ class BookingsController < ApplicationController
     @product = Product.find(params[:product_id])
     if @booking.save
       @product_assignment_controller.create(@product, @booking)
-      # redirect_to booking_path(@booking)
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), alert: "Booking has been created"
     else
       render "products/show", status: :unprocessable_entity
-      # redirect_to product_path(@product)
 
     end
   end
 
+  def booking_days
+    ((@booking.end_date - @booking.start_date) / 86_400).round(0)
+  end
   # def destroy
   # end
 

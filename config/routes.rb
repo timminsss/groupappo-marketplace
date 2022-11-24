@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :product_assignments, only: [:destroy]
 
   get "/products/search", to: "products#search"
+  # get "/products/:id/booking", to: "products#show_booked", as: "product_show_booked"
 
   get '/owner/products', to: 'products#index_owner'
   get '/owner/products/:id', to: 'products#show_owner', as: 'owner_product'
