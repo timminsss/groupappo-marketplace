@@ -19,11 +19,13 @@ class BookingsController < ApplicationController
 
     @product = Product.find(params[:product_id])
     if @booking.save
-      @booking.update(booking_status: 1)
       @product_assignment_controller.create(@product, @booking)
-      redirect_to booking_path(@booking)
+      # redirect_to booking_path(@booking)
+      redirect_to product_path(@product)
     else
-      render :new, status: :unprocessable_entity
+      render "products/show", status: :unprocessable_entity
+      # redirect_to product_path(@product)
+
     end
   end
 

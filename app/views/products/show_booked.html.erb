@@ -1,0 +1,3 @@
+<%= render "main_product_card", product: @product %>
+<h2 class="px-3 pb-0"> Accessories available from <%= @product.user.first_name.capitalize %> <%= @product.user.last_name.capitalize %></h2>
+<%= render "acc_card", product: @product %>
