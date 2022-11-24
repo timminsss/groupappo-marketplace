@@ -1,14 +1,14 @@
 <% case booking_status %>
   <% when "draft" %>
-    <span class="badge badge-light p-3">Draft</span>
+    <span class="badge bg-light text-dark">Draft</span>
   <% when "unconfirmed" %>
-    <span class="badge badge-info">Unconfirmed</span>
+    <span class="badge bg-info">Unconfirmed</span>
   <% when "confirmed" %>
-    <span class="badge badge-success">Confirmed</span>
+    <span class="badge bg-success">Confirmed</span>
   <% when "completed" %>
-    <span class="badge badge-secondary">Completed</span>
+    <span class="badge bg-secondary">Completed</span>
   <% when "declined" %>
-    <span class="badge badge-danger">Declined</span>
+    <span class="badge bg-danger">Declined</span>
   <% else %>
     Unknown status
 <% end %>

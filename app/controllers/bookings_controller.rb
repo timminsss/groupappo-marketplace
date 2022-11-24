@@ -2,7 +2,8 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show confirm decline edit]
 
   def index
-    @bookings = current_user.bookings
+    # includes loads all the products into memory so you dont have to make alot of sql queries
+    @bookings = current_user.bookings.includes(:products)
   end
 
   def index_owner
