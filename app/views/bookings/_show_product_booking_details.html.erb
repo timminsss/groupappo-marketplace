@@ -22,9 +22,14 @@
                       <p class="mb-0"><%= product_assignment.product.name %></p>
                       <p class="mb-1" style="font-size:12px;"><%= product_assignment.product.category.capitalize %></p>
                     </div>
-                    $<%= product_assignment.product.price %>
-                    <%= link_to product_assignment_path(product_assignment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                      <i class="fa-solid fa-trash ms-3"></i>
+
+                    <% unless product_assignment.product.product_type == "bike" %>
+                      <p class="mb-0">$<%= product_assignment.product.price %></p>
+                      <%= link_to product_assignment_path(product_assignment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                        <i class="fa-solid fa-trash ms-3"></i>
+                      <% end %>
+                    <% else %>
+                      <p class="mb-0" style="margin-right:30px;">$<%= product_assignment.product.price %></p>
                     <% end %>
                   </div>
                 </li>
@@ -36,11 +41,11 @@
       <p>Per day</p>
       <p>Total Price</p>
     </div>
-    <% if @booking.status == "draft" %>
-    <form method="PATCH" action="<%= checkout_path(@booking) %>", class="">
-      <input type="hidden" name="product_id" value="<%= params[:product_id] %>">
-      <input type="submit", class="btn btn-primary w-100", value="Checkout">
-    </form>
+    <% if @booking.booking_status == "draft" %>
+      <form method="PATCH" action="<%= checkout_path(@booking) %>", class="">
+        <input type="hidden" name="product_id" value="<%= params[:product_id] %>">
+        <input type="submit", class="btn btn-primary w-100", value="Checkout">
+      </form>
     <% end %>
   </div>
 </div>
