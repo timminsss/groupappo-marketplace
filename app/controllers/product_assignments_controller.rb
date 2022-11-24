@@ -6,7 +6,7 @@ class ProductAssignmentsController < ApplicationController
     @product_assignment = ProductAssignment.new(product_assignment_params)
     if @product_assignment.save
       @product_assignment.booking.update_price
-      redirect_to product_path(params[:product_id])
+      redirect_to product_booking_path(product_id: :product_id, id: :booking_id)
     else
       render 'products/show', alert: 'sth went wrong'
     end
@@ -34,5 +34,9 @@ class ProductAssignmentsController < ApplicationController
 
   def product_assignment_params
     params.permit(:product_id, :booking_id)
+  end
+
+  def permit_booking_id
+    params.permit(:booking_id)
   end
 end

@@ -2,4 +2,4 @@
   <%= render "bookings/show_product_booking", product: @product %>
 </div>
   <h2 class="px-3 pb-0"> Accessories available from <%= @product.user.first_name.capitalize %> <%= @product.user.last_name.capitalize %></h2>
-  <%= render "products/acc_card", product: @product %>
+  <%= render "products/acc_card", { product: @product } %>
