@@ -44,6 +44,15 @@ class BookingsController < ApplicationController
   # set_booking is applied at before action
   # end
 
+  def update_price
+    price_per_day = 0
+    products.each do |product|
+      price_per_day += product.price
+    end
+    total = price_per_day * 1
+    update(price: total)
+  end
+
   def confirm
     @booking.update(booking_status: "confirmed")
     redirect_to owner_booking_path
