@@ -1,6 +1,10 @@
 <div data-controller="filter">
   <div id="categories" class="d-flex">
     <button data-action="click->filter#applyFilter"
+            data-filter-target="all"
+            data-filter="*"
+            class="btn btn-secondary me-3">All bikes</button>
+    <button data-action="click->filter#applyFilter"
             data-filter-target="button"
             data-filter="mountain bike"
             class="btn btn-secondary me-3">
