@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :product_assignments, only: [:destroy]
 
+  post 'product_assignments', to: 'product_assignments#create'
+
   get "/products/search", to: "products#search"
 
   get '/owner/products', to: 'products#index_owner'
