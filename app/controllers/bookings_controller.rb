@@ -10,8 +10,8 @@ class BookingsController < ApplicationController
     @bookings = current_user.products.map(&:bookings).flatten
   end
 
-
   def show
+    @product = Product.find(params[:product_id])
   end
 
   def show_owner
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     @product = Product.find(params[:product_id])
     if @booking.save
       @product_assignment_controller.create_bike(@product, @booking)
-      redirect_to product_path(@product), alert: "Booking has been created"
+      redirect_to product_booking_path(@product, @booking), notice: "Booking has been created"
     else
       render "products/show", status: :unprocessable_entity
 
