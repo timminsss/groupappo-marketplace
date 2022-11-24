@@ -2,16 +2,17 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :bookings
   resources :products do
+    resources :bookings, only: [:show]
     resources :product_assignments, only: [:new, :create]
   end
+  resources :bookings
   resources :product_assignments, only: [:destroy]
 
   post 'product_assignments', to: 'product_assignments#create'
 
   get "/products/search", to: "products#search"
-  # get "/products/:id/booking", to: "products#show_booked", as: "product_show_booked"
+  # get "/products/:id/booking/:id", to: "bookings#show_created", as: "booking_created"
 
   get '/owner/products', to: 'products#index_owner'
   get '/owner/products/:id', to: 'products#show_owner', as: 'owner_product'

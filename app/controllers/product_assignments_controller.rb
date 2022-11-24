@@ -19,7 +19,7 @@ class ProductAssignmentsController < ApplicationController
   end
 
   def destroy
-    raise
+    @product_assignment.destroy
   end
 
   private
