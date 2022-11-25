@@ -1,0 +1,9 @@
+  <%= simple_form_for(product)  do |f| %>
+      <%=  f.input :category, collection: Product::CATEGORY_NAME, placeholder: 'Click here to select a category'  %>
+      <%=  f.input :product_type, collection: Product::PRODUCT_TYPE_NAME, placeholder: 'Click here to select a product type'  %>
+      <%=  f.input :name, placeholder: 'Tyrant by Umbrella Corp.'  %>  %>
+      <%=  f.input :description, placeholder: 'The Tyrant virus allegedly operates similarly to most other viruses, but also has the abilities to animate dead tissue, to substantially mutate its host, and to infect nearly any tissue in any type of host. It animates dead tissue by killing...' %>
+      <%=  f.input :price, placeholder: '69.0' %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit %>
+  <% end %>
