@@ -29,7 +29,10 @@
         <div class="card col-2 m-3">Total: $<%=booking.price%>
         </div>
       </div>
-      <a href="#" class="btn btn-primary">See Booking</a>
+      <%# Remember with nested paths with params being sent you need to name the params %>
+      <%# When its by it self the path will auto asume you are looking for the id of that object %>
+      <%# Example home_path(@home) => look for the id of the home even through you are sending over an object %>
+      <%= link_to "See Booking", product_booking_path(product_id: booking.products.first.id, id: booking.id), class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
