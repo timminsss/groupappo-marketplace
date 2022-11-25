@@ -5,7 +5,7 @@
         <div class="col-4 overflow-hidden">
           <div class="p-3 border bg-light h-100">
             <div class="">
-              <% if product.photo.blank? %>
+              <% unless product.photo.blank? %>
                 <%= cl_image_tag product.photo.key, height: 100, width: 150, crop: :fill, class: "mb-3" %>
               <% else %>
                 <img src="https://res.cloudinary.com/drmzvuqzo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1669322135/development/4-no-image--410x250_dljpif.jpg" class="img-fluid rounded-start mb-3" alt="..." width="100px">
