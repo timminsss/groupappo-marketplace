@@ -40,7 +40,7 @@ bikes = [
     category: "mountain bike",
     name: "Rocky Mountain Instinct 2022 Alloy 50 Gold/Red",
     image_url: "https://www.pushys.com.au/media/catalog/product/cache/5ac4e4ad447fecc0a8694a493d78cc80/r/m/rmmt-22insa50gl-1.jpeg",
-    description: "Leave your opinions at the door; this is the unruly sibling to gravel bikes of the past.",
+    description: "The DECOY is gravity-oriented, powerful, and fast. It’s a hard-hitting E-MTB with enough reserves for demanding Enduro missions. On the descents, it eats roots and rocks for breakfast, and thanks to the high-performance motor, you will enjoy this feeling on the uphill as well. More fun without the need for a shuttle, the DECOY in its mullet version (29 front, 27.5 rear wheel) is an airtime-loving weapon for all technical trails, whether downhill or uphill.",
     price: rand(50..100),
     product_type: "bike",
     user: owner
@@ -49,10 +49,10 @@ bikes = [
     category: "mountain bike",
     name: "YT Tues Core 4 27 Carbon DH MTB Nox Blue",
     image_url: "https://www.pushys.com.au/media/catalog/product/cache/5ac4e4ad447fecc0a8694a493d78cc80/0/1/01_tues-27-core4-noxblue_front.jpg",
-    description: "a half-shell somewhere above the tree line or with a number plate in the start gate,",
+    description: "The DECOY 29 is a fast and powerful All Mountain E-MTB. Ready for any adventure, no matter where the trail leads. Thanks to the high-performance motor, you'll go for longer than ever before and experience an entirely new stoke from mountain biking. The DECOY 29 is a versatile All-Mountain E-Bike with genuine YT DNA.",
     price: rand(50..100),
     product_type: "bike",
-    user: owner_2
+    user: owner
   },
   {
     category: "mountain bike",
@@ -70,7 +70,7 @@ bikes = [
     description: "The aerodynamic EnviLiv is designed with an Advanced-Grade Composite frame to be sharp and snappy, for a blazing-fast ride. Extraordinary lateral stiffness in the fork and unrivalled stopping power of aerodynamic disc brakes stack up for precise cornering control and stability. An integrated aero handlebar and stem, tubeless wheel system with 28c tyre clearance and aero tubing features will punch through rolling hills and slice through the wind.",
     price: rand(50..100),
     product_type: "bike",
-    user: owner_2
+    user: owner
   },
   {
     category: "hybrid bike",
@@ -88,7 +88,7 @@ bikes = [
     description: "The OPEN U.P. inspired a generation of gravel bikes that could fit up to 2.1 tyres. The WI.DE. (Winding Detours) can run even bigger tyres while still fitting road cranks! The monster tyres help you conquer the most extreme terrain; the performance geometry & narrow Q-factor keep you efficient while the steering geometry keeps you nimble. Nimble doesnt just mean great geometry, nimble means keeping the weight down too with Smartmount technology mounting the calipers directly without any adapters.",
     price: rand(50..100),
     product_type: "bike",
-    user: owner_2
+    user: owner
   },
   {
     category: "hybrid bike",

@@ -7,10 +7,10 @@ class ProductsController < ApplicationController
   end
 
   def search
-    if params[:product][:category].present?
-      @products = Product.where(category: params[:product][:category])
-    else
+    if params[:product].nil?
       @products = Product.where.not(category: "accessories")
+    else
+      @products = Product.where(category: params[:product][:category])
     end
   end
 
