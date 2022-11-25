@@ -14,7 +14,7 @@
             <h2 class="py-2 fw-bold text-center"><%=product.name.upcase%></h2>
             <div class="d-flex justify-content-between py-1">
               <span><%=product.category.capitalize%></span>
-              <span>$<%=product.price%> per day</span>
+              <span>$<%=product.price.round(0)%> per day</span>
             </div>
           </div>
           <p class="pt-2 text-muted"><%=product.description%></p>

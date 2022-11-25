@@ -21,7 +21,7 @@
         <td><%= booking.id %></td>
         <td><%= booking.user.first_name %></td>
         <td><%= link_to booking.products.first.name, owner_product_path(booking.products.first) %></td>
-        <td><%= booking.price %></td>
+        <td><%= booking.price.round(0) %></td>
         <td><%= render 'shared/status', booking_status: booking.booking_status %></td>
         <td class="d-flex">
           <%= link_to owner_booking_path(booking) do %>
