@@ -1,4 +1,4 @@
-<div class="card mb-3 mx-auto p2 me-3 shadow-sm" style="max-width: 600px; height:250px" data-category="<%= product.category %>">
+<div class="card mb-3 mx-auto p2 me-3 shadow-sm rounded" style="max-width: 600px; height:250px" data-category="<%= product.category %>">
   <div class="row g-0 overflow-hidden m-2" >
     <div class="col-md-6">
       <% unless product.photo.blank? %>
@@ -17,7 +17,7 @@
 
 
           <div class="row g-0 overflow-hidden text-end pe-3" >
-            <h3>$<%=product.price.round(0)%></h3><p> per Day</p>
+            <h3>$<%=product.price.round(0)%></h3><p> per day</p>
 
           </div>
 
