@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show confirm decline edit booking_days]
+  before_action :set_booking, only: %i[show confirm decline checkout edit booking_days]
 
   def index
     # includes loads all the products into memory so you dont have to make alot of sql queries
@@ -38,6 +38,12 @@ class BookingsController < ApplicationController
 
     end
   end
+
+  def checkout
+    @booking.update(booking_status: "unconfirmed")
+    redirect_to product_booking_path(product_id: :product_id, id: :booking_id)
+  end
+
 
   def confirm
     @booking.update(booking_status: "confirmed")

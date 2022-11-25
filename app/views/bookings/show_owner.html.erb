@@ -6,7 +6,6 @@
     <p ><%= @booking.start_date %> - <%= @booking.end_date %></p>
   </div>
   <div>
-    I need to change this badge to sth with color <%= @booking.booking_status  %>
     <%= render 'shared/status', booking_status:  @booking.booking_status %>
   </div>
 </div>
