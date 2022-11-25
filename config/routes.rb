@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  get "/products/search", to: "products#search"
+
   resources :products do
     resources :bookings, only: [:show]
     resources :product_assignments, only: [:new, :create]
