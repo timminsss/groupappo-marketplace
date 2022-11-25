@@ -1,23 +1,23 @@
 <%# Refactoring %>
   <div class="card-product col-7">
-    <div class="card rounded-lg p-3">
+    <div class="card rounded-lg p-3 shadow">
       <div class="">
          <% unless product.photo.blank? %>
             <%= cl_image_tag product.photo.key, height: 470, width: 700, crop: :fill, class: "mb-3" %>
           <% else %>
-            <img src="https://res.cloudinary.com/drmzvuqzo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1669322135/development/4-no-image--410x250_dljpif.jpg" class="img-fluid rounded-start mb-3" alt="..." width="100px">
+            <img src="https://res.cloudinary.com/drmzvuqzo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1669322135/development/4-no-image--410x250_dljpif.jpg" class="img-fluid rounded-start mb-3 p-3 mx-auto d-block" alt="..." width="100px">
           <% end %>
       </div>
       <div class="">
         <div class="card-product-infos">
           <div>
-            <h2><%=product.name.upcase%></h2>
+            <h2 class="py-2 fw-bold text-center"><%=product.name.upcase%></h2>
             <div class="d-flex justify-content-between py-1">
               <span><%=product.category.capitalize%></span>
-              <span>$<%=product.price%> per day</span>
+              <span>$<%=product.price.round(0)%> per day</span>
             </div>
           </div>
-          <p class="pt-2"><%=product.description%></p>
+          <p class="pt-2 text-muted"><%=product.description%></p>
         </div>
       </div>
 
@@ -25,18 +25,5 @@
   </div>
 
   <%= render "products/show_product_booking_form", product: @product %>
-</div>
-<div class="row">
-  <div class="card-product">
-    <h2>Your previous bookings</h2>
-    <% if current_user %>
-      <ul>
-        <% product.bookings.each do |booking| %>
-          <li><%= booking.id %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      Too see previous bookings, please login or register.
-    <% end %>
-  </div>
+
 </div>

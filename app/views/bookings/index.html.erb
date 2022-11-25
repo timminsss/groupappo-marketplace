@@ -2,11 +2,11 @@
 
 <h1>These are your bookings</h1>
 <% @bookings.each do |booking| %>
-  <div class="card my-4">
+  <div class="card my-4 rounded">
     <h5 class="card-header"><%= render "shared/status", booking_status:  booking.booking_status %></h5>
     <div class="card-body">
-      <h5 class="card-title"><%= booking.start_date.strftime('%d/%m/%Y %H:%M') %> - <%= booking.end_date.strftime('%d/%m/%Y %H:%M') %> </h5>
-      <p class="card-text">Bellow is a list of item associated with this listing</p>
+      <h5 class="card-title"><%= booking.start_date.strftime('%d/%m/%Y') %> - <%= booking.end_date.strftime('%d/%m/%Y') %> </h5>
+      <p class="card-text">Items associated with this listing</p>
       <%# item list%>
       <table class="table">
         <thead>
@@ -19,14 +19,14 @@
         <%# You can call the list of products directly for each booking because of the relationship %>
         <% booking.products.each do | product |%>
           <tr>
-            <td><%= product.name %></td>
-            <td><%= product.category %></td>
+            <td><%= product.name.capitalize %></td>
+            <td><%= product.category.capitalize %></td>
           </tr>
         <%end%>
         </tbody>
       </table>
       <div class="row">
-        <div class="card col-2 m-3">Total: $<%=booking.price%>
+        <div class="col-2 m-3">Total: $<%=booking.price.round(0)%>
         </div>
       </div>
       <%# Remember with nested paths with params being sent you need to name the params %>

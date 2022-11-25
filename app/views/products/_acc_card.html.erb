@@ -1,9 +1,10 @@
-<div class="container my-5 overflow-hidden rounded justify-content-center px-3">
+<div class="container my-5 rounded justify-content-center px-3">
+  <h4 class="px-3 pb-3 text-center"> Accessories available from <%= @product.user.first_name.capitalize %> <%= @product.user.last_name.capitalize %></h4>
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
   <% accessories =Product.where(category: "accessories", user_id: product.user_id).first(3) %>
   <% accessories.each do |accessoire| %>
-        <div class="col-4 overflow-hidden">
-          <div class="p-3 border bg-light h-100">
+        <div class="col-4">
+          <div class="p-3 border bg-light h-100 shadow">
             <div class="">
               <% unless product.photo.blank? %>
                 <%= cl_image_tag product.photo.key, height: 100, width: 150, crop: :fill, class: "mb-3" %>
@@ -11,7 +12,7 @@
                 <img src="https://res.cloudinary.com/drmzvuqzo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1669322135/development/4-no-image--410x250_dljpif.jpg" class="img-fluid rounded-start mb-3" alt="..." width="100px">
               <% end %>
               <div class="">
-                <h4> <%= accessoire.name.upcase %> </h4>
+                <h5 class="fw-bold"> <%= accessoire.name.upcase %> </h5>
                 <div class="d-flex align-items-baseline mb-3">
                   <h6> <%= accessoire.product_type.capitalize %> </h6>
                   <button type="button" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= accessoire.description %>">
@@ -22,15 +23,15 @@
             </div>
             <div class="d-flex align-items-center">
               <div class="row g-0 overflow-hidden text-end pe-3" >
-                <h6 class="mb-0">$<%=accessoire.price%></h6><p style="font-size:8px;"> per Day</p>
+                <h6 class="mb-0">$<%=accessoire.price.round(0)%></h6><p style="font-size:8px;"> per Day</p>
               </div>
+            </div>
 
               <% unless booking.products.include?(accessoire) %>
                 <%= render 'product_assignments/new', product: accessoire  %>
                 <% else %>
-                <button class="btn btn-link" disabled>Already added</button>
+                <button class="btn btn-link w-100 text-center" disabled>Already added</button>
                 <% end %>
-            </div>
           </div>
         </div>
   <% end %>
